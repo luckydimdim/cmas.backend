@@ -1,0 +1,9 @@
+.packages
+pubspec.lock
+.pub
+packages
+build
+.idea
+obj
+bin
+project.lock.json
