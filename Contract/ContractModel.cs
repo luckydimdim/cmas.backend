@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using cmas.backend.ConstructionObject;
+using cmas.backend.Contractor;
 
 namespace cmas.backend.Contract
 {
@@ -23,16 +25,15 @@ namespace cmas.backend.Contract
         /// </summary>
         public string Name;
 
-
         /// <summary>
         /// Подрядчик
         /// </summary>
-        public object Contractor;
+        public ContractorModel Contractor;
 
         /// <summary>
         /// Объекты строительства
         /// </summary>
-        public List<object> ConstructionObjects;
+        public List<ConstructionObjectModel> ConstructionObjects;
 
         /// <summary>
         /// Дата заключения
@@ -74,7 +75,12 @@ namespace cmas.backend.Contract
         /// </summary>
         public List<AbstractWorkModel> Works;
 
-
+        public ContractModel()
+        {
+            ConstructionObjects = new List<ConstructionObjectModel>();
+            Prepayments = new List<PrepaymentModel>();
+            Works = new List<AbstractWorkModel>();
+        }
 
 
 

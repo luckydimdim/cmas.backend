@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using System.Linq;
+using Nancy;
 
 namespace cmas.backend.Contract
 {
@@ -9,7 +10,10 @@ namespace cmas.backend.Contract
 
             Get("/api/contract/", args =>
             {
-                return HttpStatusCode.NotImplemented;
+                var contracts = (from c in Contracts select c);
+
+                return Response.AsJson(contracts);
+
             });
         }
     }

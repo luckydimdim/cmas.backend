@@ -1,13 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using cmas.backend.Authentication;
+using cmas.backend.ConstructionObject;
 using cmas.backend.Contract;
+using cmas.backend.Contractor;
 using cmas.backend.Currency;
 using cmas.backend.Unit;
 using Nancy;
 
 namespace cmas.backend
 {
+
+    /// <summary>
+    /// Родительсякий модуль, который инициализирует фейковый репозиторий
+    /// </summary>
     public class GeneralModule : NancyModule
     {
         protected List<UserRole> AvailableRoles;
@@ -15,6 +22,8 @@ namespace cmas.backend
         protected List<CurrencyModel> Currencies;
         protected List<UnitModel> Units;
         protected List<ContractModel> Contracts;
+        protected List<ConstructionObjectModel> ConstructionObjects;
+        protected List<ContractorModel> Contractors;
 
         public GeneralModule()
         {
@@ -27,6 +36,8 @@ namespace cmas.backend
             MockUnits();
             MockAvailableRoles();
             MockUsers();
+            MockContractors();
+            MockConstructionObjects();
             MockContracts();
         }
 
@@ -143,6 +154,43 @@ namespace cmas.backend
             }
         }
 
+        private void MockContractors()
+        {
+            Contractors = new List<ContractorModel>();
+            int idCounter = 0;
+
+            Contractors.Add(new ContractorModel
+            {
+                Id = ++idCounter,
+                Name = "ООО Стройиндустрия",
+            });
+
+            Contractors.Add(new ContractorModel
+            {
+                Id = ++idCounter,
+                Name = "ЗАО Юниж-Строй",
+            });
+
+            Contractors.Add(new ContractorModel
+            {
+                Id = ++idCounter,
+                Name = "ООО Союзспецстрой",
+            });
+
+            Contractors.Add(new ContractorModel
+            {
+                Id = ++idCounter,
+                Name = "ООО Городок",
+            });
+
+
+            Contractors.Add(new ContractorModel
+            {
+                Id = ++idCounter,
+                Name = "ООО Строительная комплектация",
+            });
+        }
+
         private void MockCurrency()
         {
             Currencies = new List<CurrencyModel>();
@@ -223,6 +271,38 @@ namespace cmas.backend
                 ShortNameRus = "км.",
                 ShortNameEng = "км.",
             });
+
+            Units.Add(new UnitModel
+            {
+                Id = +idCounter, // 5
+                NameRus = "часы",
+                NameEng = "часы",
+                ShortNameRus = "ч.",
+                ShortNameEng = "ч.",
+            });
+
+        }
+
+        private void MockConstructionObjects()
+        {
+            ConstructionObjects = new List<ConstructionObjectModel>();
+            int idCounter = 0;
+
+
+            ConstructionObjects.Add(new ConstructionObjectModel
+            {
+                Id = ++idCounter,
+                Name = "Жилой дом",
+                ShortName = "Жилой дом"
+            });
+
+            ConstructionObjects.Add(new ConstructionObjectModel
+            {
+                Id = ++idCounter,
+                Name = "Бойлерная станция",
+                ShortName = "Бойлерная станция"
+            });
+
         }
 
         private void MockContracts()
@@ -238,7 +318,13 @@ namespace cmas.backend
                     Id = ++idCounter,                    // 1
                     Name = "Строительство жилого дома",
                     Number = "155/15-ЯСПГ",
+                    ConclusionDate = new DateTime(2017,01,01),
+                    Contractor = (from c in Contractors where c.Id == 1 select c).SingleOrDefault()
                 };
+
+                contract.ConstructionObjects.AddRange((from c in ConstructionObjects where (c.Id == 1 || c.Id == 2) select c));
+
+                MockWorksForContract(contract);
 
                 Contracts.Add(contract);
             }
@@ -282,7 +368,6 @@ namespace cmas.backend
                 Contracts.Add(contract);
             }
             #endregion
-
 
             #region 119/55-ЯСПГ Строительство подсобных помещений
             {
@@ -361,6 +446,108 @@ namespace cmas.backend
                 Contracts.Add(contract);
             }
             #endregion
+        }
+
+        private void MockWorksForContract(ContractModel contract)
+        {
+            /*
+                001.Подготовительный этап
+                    001.1.Геологическое исследование участка
+                    001.2.Архитектурное проектирование
+                    001.3.Строительство фундамента
+                002.Строительство коробки
+                    002.1.Строительство стен
+                    002.2.Строительство внутренних перекрытий
+                    002.3.Строительство внешних перекрытий
+                    002.4.Строительство крыши
+                003.Внутренние работы
+                    003.1.Инженерные коммуникации в доме
+                        003.1.1.Подключение электроснабжения
+                        003.1.2.Подключение газоснабжение
+                        003.1.3.Подключение отопления
+                        003.1.4.Подключение кондиционирования
+                    003.2.Утепление и отделка фасадов
+                    003.3.Утепление чердачного перекрытия
+                004.Отделка
+                        004.1.Внутренняя отделка
+                        004.2.Внешняя отделка
+                005.Ландшафтные работы
+                    005.1.Озеленение территории
+                    005.2.Благоустройство
+                006.Другое
+                    006.1.Установка освещения участка и проезда к участку
+                    006.2.Настрйока системы видеонаблюдения
+            */
+
+            int idCounter = 0;
+
+            var houseObject = (from obj in ConstructionObjects where obj.Id == 1 select obj).SingleOrDefault();
+            var hourUnit = (from u in Units where u.Id == 5 select u).SingleOrDefault();
+            var rurCurrency = (from c in Currencies where c.Code == "RUR" select c).SingleOrDefault();
+            var stroyindustriyaContractor = (from c in Contractors where c.Id == 1 select c).SingleOrDefault();    // ООО Стройиндустрия
+
+            // 001.Подготовительный этап
+            {
+
+                var stage = new WorkModelStage
+                {
+                    Id = ++idCounter,
+                    Code = "001",
+                    NameRus = "Подготовительный этап",
+                    NameEng = "Подготовительный этап",
+                };
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".1",
+                    NameRus = "Геологическое исследование участка",
+                    NameEng = "Геологическое исследование участка",
+                    BeginDate = new DateTime(2017, 01, 01),
+                    EndDate = new DateTime(2017, 01, 03),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 1000,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".2",
+                    NameRus = "Архитектурное проектирование",
+                    NameEng = "Архитектурное проектирование",
+                    BeginDate = new DateTime(2017, 01, 03),
+                    EndDate = new DateTime(2017, 01, 09),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 500,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".3",
+                    NameRus = "Строительство фундамента",
+                    NameEng = "Строительство фундамента",
+                    BeginDate = new DateTime(2017, 01, 09),
+                    EndDate = new DateTime(2017, 01, 20),
+                    ObjectConstruction = houseObject,
+                    Amount = 40,
+                    Unit = hourUnit,
+                    Cost = 1300,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                contract.Works.Add(stage);
+            }
+
         }
 
         #endregion

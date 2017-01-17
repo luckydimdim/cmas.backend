@@ -1,4 +1,6 @@
-﻿namespace cmas.backend.Contract
+﻿using System.Collections.Generic;
+
+namespace cmas.backend.Contract
 {
     /// <summary>
     /// Абстрактный класс для работ или этапов, под-этапов
@@ -24,8 +26,13 @@
         public string NameEng;
 
         /// <summary>
-        /// Родительская работа/этап
+        /// Подэтапы/работы
         /// </summary>
-        public AbstractWorkModel Parent;
+        public List<AbstractWorkModel> Childrens;
+
+        public AbstractWorkModel()
+        {
+            Childrens = new List<AbstractWorkModel>();
+        }
     }
 }

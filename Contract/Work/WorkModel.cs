@@ -1,4 +1,6 @@
 ﻿using System;
+using cmas.backend.ConstructionObject;
+using cmas.backend.Contractor;
 using cmas.backend.Currency;
 using cmas.backend.Unit;
 
@@ -7,7 +9,7 @@ namespace cmas.backend.Contract
     /// <summary>
     /// Работа (или услуга)
     /// </summary>
-    public class WorkModelModel : AbstractWorkModel
+    public class WorkModel : AbstractWorkModel
     {
         /// <summary>
         /// Дата начала работ
@@ -32,7 +34,7 @@ namespace cmas.backend.Contract
         /// <summary>
         /// Стоимость
         /// </summary>
-        public int Cost;
+        public decimal Cost;
 
         /// <summary>
         /// Валюта
@@ -42,11 +44,11 @@ namespace cmas.backend.Contract
         /// <summary>
         /// Исполнитель (подрядчик)
         /// </summary>
-        public object Contractor;
+        public ContractorModel Contractor;
 
         /// <summary>
         /// Объект строительства
         /// </summary>
-        public object ObjectConstruction;
+        public ConstructionObjectModel ObjectConstruction;
     }
 }

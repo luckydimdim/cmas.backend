@@ -3,7 +3,7 @@
 namespace cmas.backend.Contract
 {
     /// <summary>
-    /// Этап работы или услуги
+    /// С‹РІР°С‹РІ
     /// </summary>
     public class WorkModelStage : AbstractWorkModel
     {

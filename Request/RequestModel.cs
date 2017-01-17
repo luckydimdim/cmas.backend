@@ -28,5 +28,10 @@ namespace cmas.backend.Request
         /// </summary>
         public List<AbstractWorkModel> Works;
 
+
+        public RequestModel()
+        {
+            Works = new List<AbstractWorkModel>();
+        }
     }
 }
