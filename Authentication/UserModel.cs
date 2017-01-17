@@ -8,12 +8,10 @@ namespace cmas.backend.Authentication
         public string Login;
         public string FirstName;
         public string LastName;
-
         public string Password;
-
         public List<UserRole> UserRole;
 
-       public UserModel()
+        public UserModel()
         {
             UserRole = new List<UserRole>();
         }
