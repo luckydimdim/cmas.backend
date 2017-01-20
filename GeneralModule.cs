@@ -560,10 +560,10 @@ namespace cmas.backend
         private void MockRequests()
         {
             Requests = new List<RequestModel>();
-            int idCounter = 0;
 
             Requests.Add(new RequestModel
             {
+                Id = 633441,
                 ContractorName = "Строительство морского порта",
                 CreationDate = new DateTime(2017, 01, 01),
                 CorrectionDate = new DateTime(2017, 01, 20),
@@ -574,6 +574,7 @@ namespace cmas.backend
 
             Requests.Add(new RequestModel
             {
+                Id = 64312,
                 ContractorName = "Строительство электросетей",
                 CreationDate = new DateTime(2017, 01, 01),
                 CorrectionDate = new DateTime(2017, 01, 10),
@@ -584,6 +585,7 @@ namespace cmas.backend
 
             Requests.Add(new RequestModel
             {
+                Id = 323552,
                 ContractorName = "Строительство электросетей",
                 CreationDate = new DateTime(2016, 12, 12),
                 CorrectionDate = new DateTime(2015, 05, 17),
@@ -594,6 +596,7 @@ namespace cmas.backend
 
             Requests.Add(new RequestModel
             {
+                Id = 45266,
                 ContractorName = "Строительство электросетей",
                 CreationDate = new DateTime(2017,01,01),
                 CorrectionDate = new DateTime(2017,01,10),
