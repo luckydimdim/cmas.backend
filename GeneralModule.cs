@@ -6,6 +6,7 @@ using cmas.backend.ConstructionObject;
 using cmas.backend.Contract;
 using cmas.backend.Contractor;
 using cmas.backend.Currency;
+using cmas.backend.Request;
 using cmas.backend.Unit;
 using Nancy;
 
@@ -24,6 +25,7 @@ namespace cmas.backend
         protected List<ContractModel> Contracts;
         protected List<ConstructionObjectModel> ConstructionObjects;
         protected List<ContractorModel> Contractors;
+        protected List<RequestModel> Requests;
 
         public GeneralModule()
         {
@@ -39,6 +41,7 @@ namespace cmas.backend
             MockContractors();
             MockConstructionObjects();
             MockContracts();
+            MockRequests();
         }
 
         #region mock functions
@@ -306,147 +309,147 @@ namespace cmas.backend
         }
 
         private void MockContracts()
-        {
-            Contracts = new List<ContractModel>();
-            int idCounter = 0;
+                 {
+                     Contracts = new List<ContractModel>();
+                     int idCounter = 0;
 
 
-            #region 155/15-ЯСПГ Строительство жилого дома
-            {
-                var contract = new ContractModel
-                {
-                    Id = ++idCounter,                    // 1
-                    Name = "Строительство жилого дома",
-                    Number = "155/15-ЯСПГ",
-                    ConclusionDate = new DateTime(2017,01,01),
-                    Contractor = (from c in Contractors where c.Id == 1 select c).SingleOrDefault()
-                };
+                     #region 155/15-ЯСПГ Строительство жилого дома
+                     {
+                         var contract = new ContractModel
+                         {
+                             Id = ++idCounter,                    // 1
+                             Name = "Строительство жилого дома",
+                             Number = "155/15-ЯСПГ",
+                             ConclusionDate = new DateTime(2017,01,01),
+                             Contractor = (from c in Contractors where c.Id == 1 select c).SingleOrDefault()
+                         };
 
-                contract.ConstructionObjects.AddRange((from c in ConstructionObjects where (c.Id == 1 || c.Id == 2) select c));
+                         contract.ConstructionObjects.AddRange((from c in ConstructionObjects where (c.Id == 1 || c.Id == 2) select c));
 
-                MockWorksForContract(contract);
+                         MockWorksForContract(contract);
 
-                Contracts.Add(contract);
-            }
-            #endregion
+                         Contracts.Add(contract);
+                     }
+                     #endregion
 
-            #region 403/25-ЯСПГ Строительство электросетей
-            {
-                var contract = new ContractModel
-                {
-                    Id = ++idCounter,                    // 2
-                    Name = "Строительство электросетей",
-                    Number = "403/25-ЯСПГ",
-                };
+                     #region 403/25-ЯСПГ Строительство электросетей
+                     {
+                         var contract = new ContractModel
+                         {
+                             Id = ++idCounter,                    // 2
+                             Name = "Строительство электросетей",
+                             Number = "403/25-ЯСПГ",
+                         };
 
-                Contracts.Add(contract);
-            }
-            #endregion
+                         Contracts.Add(contract);
+                     }
+                     #endregion
 
-            #region 10/389-ЯСПГ Строительство трубопровода
-            {
-                var contract = new ContractModel
-                {
-                    Id = ++idCounter,                    // 3
-                    Name = "Строительство трубопровода",
-                    Number = "10/389-ЯСПГ",
-                };
+                     #region 10/389-ЯСПГ Строительство трубопровода
+                     {
+                         var contract = new ContractModel
+                         {
+                             Id = ++idCounter,                    // 3
+                             Name = "Строительство трубопровода",
+                             Number = "10/389-ЯСПГ",
+                         };
 
-                Contracts.Add(contract);
-            }
-            #endregion
+                         Contracts.Add(contract);
+                     }
+                     #endregion
 
-            #region 985/22-ЯСПГ Строительство газопровода
-            {
-                var contract = new ContractModel
-                {
-                    Id = ++idCounter,                    // 4
-                    Name = "Строительство газопровода",
-                    Number = "985/22-ЯСПГ",
-                };
+                     #region 985/22-ЯСПГ Строительство газопровода
+                     {
+                         var contract = new ContractModel
+                         {
+                             Id = ++idCounter,                    // 4
+                             Name = "Строительство газопровода",
+                             Number = "985/22-ЯСПГ",
+                         };
 
-                Contracts.Add(contract);
-            }
-            #endregion
+                         Contracts.Add(contract);
+                     }
+                     #endregion
 
-            #region 119/55-ЯСПГ Строительство подсобных помещений
-            {
-                var contract = new ContractModel
-                {
-                    Id = ++idCounter,                    // 5
-                    Name = "Строительство подсобных помещений",
-                    Number = "119/55-ЯСПГ",
-                };
+                     #region 119/55-ЯСПГ Строительство подсобных помещений
+                     {
+                         var contract = new ContractModel
+                         {
+                             Id = ++idCounter,                    // 5
+                             Name = "Строительство подсобных помещений",
+                             Number = "119/55-ЯСПГ",
+                         };
 
-                Contracts.Add(contract);
-            }
-            #endregion
+                         Contracts.Add(contract);
+                     }
+                     #endregion
 
-            #region 69/20-ЯСПГ Налоговое консультирование
-            {
-                var contract = new ContractModel
-                {
-                    Id = ++idCounter,                    // 6
-                    Name = "Налоговое консультирование",
-                    Number = "69/20-ЯСПГ",
-                };
+                     #region 69/20-ЯСПГ Налоговое консультирование
+                     {
+                         var contract = new ContractModel
+                         {
+                             Id = ++idCounter,                    // 6
+                             Name = "Налоговое консультирование",
+                             Number = "69/20-ЯСПГ",
+                         };
 
-                Contracts.Add(contract);
-            }
-            #endregion
+                         Contracts.Add(contract);
+                     }
+                     #endregion
 
-            #region 110/91-ЯСПГ Бухгалтерское консультирование
-            {
-                var contract = new ContractModel
-                {
-                    Id = ++idCounter,                    // 7
-                    Name = "Бухгалтерское консультирование",
-                    Number = "110/91-ЯСПГ",
-                };
+                     #region 110/91-ЯСПГ Бухгалтерское консультирование
+                     {
+                         var contract = new ContractModel
+                         {
+                             Id = ++idCounter,                    // 7
+                             Name = "Бухгалтерское консультирование",
+                             Number = "110/91-ЯСПГ",
+                         };
 
-                Contracts.Add(contract);
-            }
-            #endregion
+                         Contracts.Add(contract);
+                     }
+                     #endregion
 
-            #region 97/445-ЯСПГ Возведение ограждений
-            {
-                var contract = new ContractModel
-                {
-                    Id = ++idCounter,                    // 8
-                    Name = "Возведение ограждений",
-                    Number = "97/445-ЯСПГ",
-                };
+                     #region 97/445-ЯСПГ Возведение ограждений
+                     {
+                         var contract = new ContractModel
+                         {
+                             Id = ++idCounter,                    // 8
+                             Name = "Возведение ограждений",
+                             Number = "97/445-ЯСПГ",
+                         };
 
-                Contracts.Add(contract);
-            }
-            #endregion
+                         Contracts.Add(contract);
+                     }
+                     #endregion
 
-            #region 232/40-ЯСПГ Закладка фундамента
-            {
-                var contract = new ContractModel
-                {
-                    Id = ++idCounter,                    // 9
-                    Name = "Закладка фундамента",
-                    Number = "232/40-ЯСПГ",
-                };
+                     #region 232/40-ЯСПГ Закладка фундамента
+                     {
+                         var contract = new ContractModel
+                         {
+                             Id = ++idCounter,                    // 9
+                             Name = "Закладка фундамента",
+                             Number = "232/40-ЯСПГ",
+                         };
 
-                Contracts.Add(contract);
-            }
-            #endregion
+                         Contracts.Add(contract);
+                     }
+                     #endregion
 
-            #region 90/877-ЯСПГ Транспортировка щебня
-            {
-                var contract = new ContractModel
-                {
-                    Id = ++idCounter,                    // 10
-                    Name = "Транспортировка щебня",
-                    Number = "90/877-ЯСПГ",
-                };
+                     #region 90/877-ЯСПГ Транспортировка щебня
+                     {
+                         var contract = new ContractModel
+                         {
+                             Id = ++idCounter,                    // 10
+                             Name = "Транспортировка щебня",
+                             Number = "90/877-ЯСПГ",
+                         };
 
-                Contracts.Add(contract);
-            }
-            #endregion
-        }
+                         Contracts.Add(contract);
+                     }
+                     #endregion
+                 }
 
         private void MockWorksForContract(ContractModel contract)
         {
@@ -548,6 +551,56 @@ namespace cmas.backend
                 contract.Works.Add(stage);
             }
 
+        }
+
+        #endregion
+
+        #region Requests
+
+        private void MockRequests()
+        {
+            Requests = new List<RequestModel>();
+            int idCounter = 0;
+
+            Requests.Add(new RequestModel
+            {
+                ContractorName = "Строительство морского порта",
+                CreationDate = new DateTime(2017, 01, 01),
+                CorrectionDate = new DateTime(2017, 01, 20),
+                ContractNumber = "403/25-ЯСПГ (доп. 2)",
+                Amount = 300000000,
+                Status = "Черновик"
+            });
+
+            Requests.Add(new RequestModel
+            {
+                ContractorName = "Строительство электросетей",
+                CreationDate = new DateTime(2017, 01, 01),
+                CorrectionDate = new DateTime(2017, 01, 10),
+                ContractNumber = "403/25-ЯСПГ",
+                Amount = 1000,
+                Status = "На доработку"
+            });
+
+            Requests.Add(new RequestModel
+            {
+                ContractorName = "Строительство электросетей",
+                CreationDate = new DateTime(2016, 12, 12),
+                CorrectionDate = new DateTime(2015, 05, 17),
+                ContractNumber = "7603/2445-ЯСПГ 1795123 (доп. 123)",
+                Amount = 45600000,
+                Status = "Согласована"
+            });
+
+            Requests.Add(new RequestModel
+            {
+                ContractorName = "Строительство электросетей",
+                CreationDate = new DateTime(2017,01,01),
+                CorrectionDate = new DateTime(2017,01,10),
+                ContractNumber = "403/25-ЯСПГ",
+                Amount = 1000,
+                Status = "На доработку"
+            });
         }
 
         #endregion
