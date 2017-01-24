@@ -30,6 +30,8 @@ namespace cmas.backend.Contract
         /// </summary>
         public List<AbstractWorkModel> Childrens;
 
+        public abstract decimal Cost { get; set; }
+
         public AbstractWorkModel()
         {
             Childrens = new List<AbstractWorkModel>();

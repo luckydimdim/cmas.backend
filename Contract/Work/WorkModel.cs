@@ -34,7 +34,7 @@ namespace cmas.backend.Contract
         /// <summary>
         /// Стоимость
         /// </summary>
-        public decimal Cost;
+        public override decimal Cost { get; set; }
 
         /// <summary>
         /// Валюта
@@ -50,5 +50,6 @@ namespace cmas.backend.Contract
         /// Объект строительства
         /// </summary>
         public ConstructionObjectModel ObjectConstruction;
+
     }
 }

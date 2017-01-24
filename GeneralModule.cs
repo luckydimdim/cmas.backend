@@ -4,6 +4,7 @@ using System.Linq;
 using cmas.backend.Authentication;
 using cmas.backend.ConstructionObject;
 using cmas.backend.Contract;
+using cmas.backend.ContractBudget;
 using cmas.backend.Contractor;
 using cmas.backend.Currency;
 using cmas.backend.Request;
@@ -26,6 +27,7 @@ namespace cmas.backend
         protected List<ConstructionObjectModel> ConstructionObjects;
         protected List<ContractorModel> Contractors;
         protected List<RequestModel> Requests;
+        protected List<ContractBudgetModel> ContractBudgets;
 
         public GeneralModule()
         {
@@ -42,6 +44,7 @@ namespace cmas.backend
             MockConstructionObjects();
             MockContracts();
             MockRequests();
+            MockContractBudgets();
         }
 
         #region mock functions
@@ -551,6 +554,285 @@ namespace cmas.backend
                 contract.Works.Add(stage);
             }
 
+            // 002.Строительство коробки
+            {
+
+                var stage = new WorkModelStage
+                {
+                    Id = ++idCounter,
+                    Code = "002",
+                    NameRus = "Строительство коробки",
+                    NameEng = "Строительство коробки",
+                };
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".1",
+                    NameRus = "Строительство стен",
+                    NameEng = "Строительство стен",
+                    BeginDate = new DateTime(2017, 01, 01),
+                    EndDate = new DateTime(2017, 01, 03),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 1000,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".2",
+                    NameRus = "Строительство внутренних перекрытий",
+                    NameEng = "Строительство внутренних перекрытий",
+                    BeginDate = new DateTime(2017, 01, 03),
+                    EndDate = new DateTime(2017, 01, 09),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 500,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".3",
+                    NameRus = "Строительство внешних перекрытий",
+                    NameEng = "Строительство внешних перекрытий",
+                    BeginDate = new DateTime(2017, 01, 09),
+                    EndDate = new DateTime(2017, 01, 20),
+                    ObjectConstruction = houseObject,
+                    Amount = 40,
+                    Unit = hourUnit,
+                    Cost = 1300,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".4",
+                    NameRus = "Строительство крыши",
+                    NameEng = "Строительство крыши",
+                    BeginDate = new DateTime(2017, 01, 09),
+                    EndDate = new DateTime(2017, 01, 20),
+                    ObjectConstruction = houseObject,
+                    Amount = 40,
+                    Unit = hourUnit,
+                    Cost = 1300,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                contract.Works.Add(stage);
+            }
+
+            // 003.Строительство коробки
+            {
+
+                var stage = new WorkModelStage
+                {
+                    Id = ++idCounter,
+                    Code = "003",
+                    NameRus = "Внутренние работы",
+                    NameEng = "Внутренние работы",
+                };
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".1",
+                    NameRus = "Инженерные коммуникации в доме",
+                    NameEng = "Инженерные коммуникации в доме",
+                    BeginDate = new DateTime(2017, 01, 01),
+                    EndDate = new DateTime(2017, 01, 03),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 1000,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".2",
+                    NameRus = "Утепление и отделка фасадов",
+                    NameEng = "Утепление и отделка фасадов",
+                    BeginDate = new DateTime(2017, 01, 03),
+                    EndDate = new DateTime(2017, 01, 09),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 500,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".3",
+                    NameRus = "Утепление чердачного перекрытия",
+                    NameEng = "Утепление чердачного перекрытия",
+                    BeginDate = new DateTime(2017, 01, 09),
+                    EndDate = new DateTime(2017, 01, 20),
+                    ObjectConstruction = houseObject,
+                    Amount = 40,
+                    Unit = hourUnit,
+                    Cost = 1300,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                contract.Works.Add(stage);
+            }
+
+            // 004.Отделка
+            {
+
+                var stage = new WorkModelStage
+                {
+                    Id = ++idCounter,
+                    Code = "004",
+                    NameRus = "Внутренние работы",
+                    NameEng = "Внутренние работы",
+                };
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".1",
+                    NameRus = "Внутренняя отделка",
+                    NameEng = "Внутренняя отделка",
+                    BeginDate = new DateTime(2017, 01, 01),
+                    EndDate = new DateTime(2017, 01, 03),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 1000,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".2",
+                    NameRus = "Внешняя отделка",
+                    NameEng = "Внешняя отделка",
+                    BeginDate = new DateTime(2017, 01, 03),
+                    EndDate = new DateTime(2017, 01, 09),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 500,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                contract.Works.Add(stage);
+            }
+
+            // 005.Ландшафтные работы
+            {
+
+                var stage = new WorkModelStage
+                {
+                    Id = ++idCounter,
+                    Code = "005",
+                    NameRus = "Ландшафтные работы",
+                    NameEng = "Ландшафтные работы",
+                };
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".1",
+                    NameRus = "Озеленение территории",
+                    NameEng = "Озеленение территории",
+                    BeginDate = new DateTime(2017, 01, 01),
+                    EndDate = new DateTime(2017, 01, 03),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 1000,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".2",
+                    NameRus = "Благоустройство",
+                    NameEng = "Благоустройство",
+                    BeginDate = new DateTime(2017, 01, 03),
+                    EndDate = new DateTime(2017, 01, 09),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 500,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                contract.Works.Add(stage);
+            }
+
+            // 006.Другое
+            {
+
+                var stage = new WorkModelStage
+                {
+                    Id = ++idCounter,
+                    Code = "006",
+                    NameRus = "Другое",
+                    NameEng = "Другое",
+                };
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".1",
+                    NameRus = "Установка освещения участка и проезда к участку",
+                    NameEng = "Установка освещения участка и проезда к участку",
+                    BeginDate = new DateTime(2017, 01, 01),
+                    EndDate = new DateTime(2017, 01, 03),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 1000,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                stage.Childrens.Add(new WorkModel
+                {
+                    Id = ++idCounter,
+                    Code = stage.Code + ".2",
+                    NameRus = "Настрйока системы видеонаблюдения",
+                    NameEng = "Настрйока системы видеонаблюдения",
+                    BeginDate = new DateTime(2017, 01, 03),
+                    EndDate = new DateTime(2017, 01, 09),
+                    ObjectConstruction = houseObject,
+                    Amount = 16,
+                    Unit = hourUnit,
+                    Cost = 500,
+                    Currency = rurCurrency,
+                    Contractor = stroyindustriyaContractor
+                });
+
+                contract.Works.Add(stage);
+            }
+
         }
 
         #endregion
@@ -607,5 +889,11 @@ namespace cmas.backend
         }
 
         #endregion
+
+
+        void MockContractBudgets()
+        {
+            ContractBudgets = new List<ContractBudgetModel>();
+        }
     }
 }
