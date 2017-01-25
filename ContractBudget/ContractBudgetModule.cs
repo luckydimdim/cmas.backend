@@ -75,7 +75,9 @@ namespace cmas.backend.ContractBudget
                     dictionary.Add("w2ui", w2ui);
                 }
 
-p            }
+                result.Add(row);
+
+            }
 
             return result;
         }
