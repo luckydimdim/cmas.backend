@@ -53,7 +53,7 @@ namespace cmas.backend.ContractBudget
             return result;
         }
 
-        private List<object> ConvertFromContractBudgetAbstractItemModel(List<AbstractWorkModel> Works, List<ContractBudgetAbstractItemModel> items)
+        private List<object> ContractBudgetItemsToJson(List<AbstractWorkModel> Works, List<ContractBudgetAbstractItemModel> items)
         {
             var result = new List<object>();
 
@@ -71,7 +71,7 @@ namespace cmas.backend.ContractBudget
 
                 if (item is ContractBudgetStageItemModel)
                 {
-                    var w2ui = new { children = ConvertFromContractBudgetAbstractItemModel(work.Childrens, item.Childrens)};
+                    var w2ui = new { children = ContractBudgetItemsToJson(work.Childrens, item.Childrens)};
                     dictionary.Add("w2ui", w2ui);
                 }
 
@@ -138,7 +138,7 @@ namespace cmas.backend.ContractBudget
 
                 var contract = (from b in Contracts where b.Id == contractId select b).SingleOrDefault();
 
-                var result = ConvertFromContractBudgetAbstractItemModel(contract.Works, contractBudget.Items);
+                var result = ContractBudgetItemsToJson(contract.Works, contractBudget.Items);
 
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
