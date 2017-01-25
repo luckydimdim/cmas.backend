@@ -19,7 +19,7 @@ namespace cmas.backend.ContractBudget
             {
                 ContractBudgetAbstractItemModel item = null;
 
-                if (work is WorkModelStage)
+                if (work is WorkStageModel)
                     item = new ContractBudgetStageItemModel();
                 else
                     item = new ContractBudgetItemModel();
@@ -44,7 +44,7 @@ namespace cmas.backend.ContractBudget
                     item.Payments.Add(payment);
                 }
 
-            if (work is WorkModelStage)
+            if (work is WorkStageModel)
                     item.Childrens = ConvertFromWork(ref idCounter, work.Childrens);
 
                 result.Add(item);

@@ -5,16 +5,16 @@ namespace cmas.backend.Contract
     /// <summary>
     /// ываыв
     /// </summary>
-    public class WorkModelStage : AbstractWorkModel
+    public class WorkStageModel : AbstractWorkModel
     {
         /// <summary>
         /// Стоимость
         /// </summary>
-        public override decimal Cost {
+        public override decimal Cost
+        {
             get { return (from c in Childrens select c.Cost).Sum(); }
 
-            set
-            {
-            }}
+            set { }
+        }
     }
 }

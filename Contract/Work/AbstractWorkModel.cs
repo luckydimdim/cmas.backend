@@ -32,7 +32,7 @@ namespace cmas.backend.Contract
 
         public abstract decimal Cost { get; set; }
 
-        public AbstractWorkModel()
+        protected AbstractWorkModel()
         {
             Childrens = new List<AbstractWorkModel>();
         }
