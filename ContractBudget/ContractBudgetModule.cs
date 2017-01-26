@@ -12,7 +12,7 @@ namespace cmas.backend.ContractBudget
         public ContractBudgetModule(Repository repository) : base(repository, "/api/contractBudget")
         {
 
-            Get("/", args =>
+            Get("/list", args =>
             {
                 var contractBudgets = (from b in Repository.ContractBudgets select b);
 
@@ -20,7 +20,20 @@ namespace cmas.backend.ContractBudget
 
             });
 
-            Get("/days/{id}", args =>
+            Get("/{id}", args =>
+            {
+                var contractId = args.id;
+
+                var contractBudget = (from b in Repository.ContractBudgets where b.ContractId == contractId select b).SingleOrDefault();
+
+                if (contractBudget == null)
+                    return HttpStatusCode.NotFound;;
+
+                return HttpStatusCode.OK;
+
+            });
+
+            Get("/{id}/days", args =>
             {
                 var contractId = args.id;
 
@@ -30,7 +43,7 @@ namespace cmas.backend.ContractBudget
 
             });
 
-            Get("/months/{id}", args =>
+            Get("/{id}/months", args =>
             {
                 var contractId = args.id;
 
@@ -47,7 +60,7 @@ namespace cmas.backend.ContractBudget
 
             });
 
-            Post("/create/{id}", args =>
+            Post("/{id}/create", args =>
             {
                 var contractId = args.id;
 
