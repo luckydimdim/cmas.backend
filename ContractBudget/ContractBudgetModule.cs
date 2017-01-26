@@ -50,7 +50,7 @@ namespace cmas.backend.ContractBudget
                 var contractBudget = (from b in Repository.ContractBudgets where b.ContractId == contractId select b).SingleOrDefault();
 
                 if (contractBudget == null)
-                    return Response.AsJson(new List<object>());
+                    contractBudget = ContractBudgetLogic.CreateContractBudget(contractId, ref Repository.ContractBudgets,Repository.Contracts);
 
                 var result = ContractBudgetConverter.ContractBudgetItemsToJson(contractBudget.Items);
 
