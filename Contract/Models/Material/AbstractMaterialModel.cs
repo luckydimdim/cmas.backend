@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace cmas.backend.Contract.Material
+namespace cmas.backend.Contract.Models.Material
 {
     public abstract class AbstractMaterialModel
     {

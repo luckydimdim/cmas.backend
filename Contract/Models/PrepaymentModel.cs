@@ -1,7 +1,7 @@
-﻿using cmas.backend.Currency;
-using System;
+﻿using System;
+using cmas.backend.Currency;
 
-namespace cmas.backend.Contract
+namespace cmas.backend.Contract.Models
 {
     public class PrepaymentModel
     {

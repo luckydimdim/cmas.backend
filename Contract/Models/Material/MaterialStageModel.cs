@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace cmas.backend.Contract.Material
+namespace cmas.backend.Contract.Models.Material
 {
     public class MaterialStageModel : AbstractMaterialModel
     {

@@ -1,9 +1,9 @@
 ﻿using System;
-using cmas.backend.Unit;
 using cmas.backend.ConstructionObject;
 using cmas.backend.Currency;
+using cmas.backend.Unit;
 
-namespace cmas.backend.Contract.Material
+namespace cmas.backend.Contract.Models.Material
 {
     public class MaterialModel : AbstractMaterialModel
     {

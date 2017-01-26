@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using Nancy;
+using Nancy.Cryptography;
 
 namespace cmas.backend.Authentication
 {
     public class AuthenticationModule : GeneralModule
     {
 
-        public AuthenticationModule()
+        public AuthenticationModule(Repository repository) : base(repository)
         {
 
             Post("/api/authentication/login", args =>
@@ -14,7 +15,7 @@ namespace cmas.backend.Authentication
                 var login = this.Request.Form["login"].Value;
                 var password = this.Request.Form["password"].Value;
 
-                var user = (from u in Users where u.Login == login && u.Password == password select u).SingleOrDefault();
+                var user = (from u in Repository.Users where u.Login == login && u.Password == password select u).SingleOrDefault();
 
                 if (user != null)
                     return Response.AsJson(user);

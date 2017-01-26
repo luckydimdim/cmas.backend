@@ -1,162 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
+﻿using System.Collections.Generic;
 using Nancy;
 using System.Linq;
-using cmas.backend.Contract;
-using cmas.backend.ContractBudget.Item;
 
 
 namespace cmas.backend.ContractBudget
 {
-    public class ContractBudgetModule: GeneralModule
+    public sealed class ContractBudgetModule: GeneralModule
     {
-        private List<ContractBudgetAbstractItemModel> ConvertFromWork( ref int idCounter, List<AbstractWorkModel> works)
-        {
-            List<ContractBudgetAbstractItemModel> result = new List<ContractBudgetAbstractItemModel>();
 
-            foreach (var work in works)
-            {
-                ContractBudgetAbstractItemModel item = null;
 
-                if (work is WorkStageModel)
-                    item = new ContractBudgetStageItemModel();
-                else
-                    item = new ContractBudgetItemModel();
-
-                item.Id = ++idCounter;
-                item.WorkId = work.Id;
-
-                if (item is ContractBudgetItemModel)
-                {
-
-                    var payment = new PaymentModel
-                    {
-                        Cost = work.Cost
-                    };
-
-                    var wModel = work as WorkModel;
-                    if (wModel != null)
-                    {
-                        payment.PaymentDate = wModel.EndDate;
-                    }
-
-                    item.Payments.Add(payment);
-                }
-
-            if (work is WorkStageModel)
-                    item.Childrens = ConvertFromWork(ref idCounter, work.Childrens);
-
-                result.Add(item);
-            }
-
-            return result;
-        }
-
-        private List<object> ContractBudgetItemsToJson(List<AbstractWorkModel> Works, List<ContractBudgetAbstractItemModel> items)
-        {
-            var result = new List<object>();
-
-            foreach (var item in items)
-            {
-                dynamic row = new ExpandoObject();
-                var dictionary = (IDictionary<string, object>)row;
-
-                var work = (from w in Works where w.Id == item.WorkId select w).SingleOrDefault();
-
-                row.Code = work.Code;
-                row.recid = item.Id;
-                row.Name = work.NameRus;
-                dictionary.Add("01_2017", "1 000");
-
-                if (item is ContractBudgetStageItemModel)
-                {
-                    var w2ui = new { children = ContractBudgetItemsToJson(work.Childrens, item.Childrens)};
-                    dictionary.Add("w2ui", w2ui);
-                }
-
-                result.Add(row);
-
-            }
-
-            return result;
-        }
-
-        private ContractBudgetModel createContractBudget(int contractId)
-        {
-            var contractBudget = (from b in ContractBudgets where b.contractId == contractId select b).SingleOrDefault();
-            var contract = (from b in Contracts where b.Id == contractId select b).SingleOrDefault();
-            var count = (from b in ContractBudgets select b).Count();
-
-            if (contractBudget == null)
-            {
-                int idCounter = 0;
-                contractBudget = new ContractBudgetModel();
-
-                contractBudget.Id = count + 1;
-                contractBudget.contractId = contractId;
-
-                contractBudget.Items = ConvertFromWork(ref idCounter, contract.Works);
-
-                ContractBudgets.Add(contractBudget);
-            }
-
-            return contractBudget;
-        }
-
-        public ContractBudgetModule()
+        public ContractBudgetModule(Repository repository) : base(repository, "/api/contractBudget")
         {
 
-            Get("/api/contractBudget/", args =>
+            Get("/", args =>
             {
-                var contractBudgets = (from b in ContractBudgets select b);
+                var contractBudgets = (from b in Repository.ContractBudgets select b);
 
                 return Response.AsJson(contractBudgets);
 
             });
 
-            Get("/api/contractBudget/days/{id}", args =>
+            Get("/days/{id}", args =>
             {
                 var contractId = args.id;
 
-                var contractBudget = (from b in ContractBudgets where b.contractId == contractId select b).SingleOrDefault();
+                var contractBudget = (from b in Repository.ContractBudgets where b.ContractId == contractId select b).SingleOrDefault();
 
                 return Response.AsJson(contractBudget);
 
             });
 
-            Get("/api/contractBudget/months/{id}", args =>
+            Get("/months/{id}", args =>
             {
                 var contractId = args.id;
 
-                var contractBudget = (from b in ContractBudgets where b.contractId == contractId select b).SingleOrDefault();
+                var contractBudget = (from b in Repository.ContractBudgets where b.ContractId == contractId select b).SingleOrDefault();
 
                 if (contractBudget == null)
-                {
-                    contractBudget = createContractBudget(contractId);
-                }
+                    return Response.AsJson(new List<object>());
 
-                var contract = (from b in Contracts where b.Id == contractId select b).SingleOrDefault();
+                var result = ContractBudgetConverter.ContractBudgetItemsToJson(contractBudget.Items);
 
-                var result = ContractBudgetItemsToJson(contract.Works, contractBudget.Items);
-
-                string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-
-                return Response.AsText(json);
+                var response = (Response)Newtonsoft.Json.JsonConvert.SerializeObject(result);
+                response.ContentType = "application/json";
+                return response;
 
             });
 
-
-
-            Post("/api/contractBudget/create/{id}", args =>
+            Post("/create/{id}", args =>
             {
                 var contractId = args.id;
 
-                var contractBudget = createContractBudget(contractId);
+                var contractBudget = ContractBudgetLogic.CreateContractBudget(contractId, ref Repository.ContractBudgets,Repository.Contracts);
 
-                string json = Newtonsoft.Json.JsonConvert.SerializeObject(contractBudget);
+                if (contractBudget == null)
+                    return HttpStatusCode.BadRequest;
 
-                return Response.AsText(json);
+                return HttpStatusCode.OK;
 
             });
 

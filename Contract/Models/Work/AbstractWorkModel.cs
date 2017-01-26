@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace cmas.backend.Contract
+namespace cmas.backend.Contract.Models.Work
 {
     /// <summary>
     /// Абстрактный класс для работ или этапов, под-этапов

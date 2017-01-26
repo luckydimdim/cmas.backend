@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
-using cmas.backend.Contract;
+using cmas.backend.Contract.Models.Work;
 
-namespace cmas.backend.ContractBudget.Item
+namespace cmas.backend.ContractBudget.Models.Item
 {
     public abstract class ContractBudgetAbstractItemModel
     {
         public int Id;
-        public int WorkId;
+        public AbstractWorkModel Work;
 
         public abstract List<PaymentModel> Payments { get; set; }
 
         public List<ContractBudgetAbstractItemModel> Childrens { get; set; }
 
-        public ContractBudgetAbstractItemModel()
+        protected ContractBudgetAbstractItemModel()
         {
             Childrens = new List<ContractBudgetAbstractItemModel>();
         }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
-namespace cmas.backend.ContractBudget.Item
+namespace cmas.backend.ContractBudget.Models.Item
 {
     public class ContractBudgetStageItemModel : ContractBudgetAbstractItemModel
     {

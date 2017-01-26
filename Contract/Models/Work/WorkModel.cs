@@ -4,7 +4,7 @@ using cmas.backend.Contractor;
 using cmas.backend.Currency;
 using cmas.backend.Unit;
 
-namespace cmas.backend.Contract
+namespace cmas.backend.Contract.Models.Work
 {
     /// <summary>
     /// Работа (или услуга)

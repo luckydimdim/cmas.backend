@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using cmas.backend.ConstructionObject;
-using cmas.backend.Contract.Material;
+using cmas.backend.Contract.Models.Material;
+using cmas.backend.Contract.Models.Work;
 using cmas.backend.Contractor;
 
-namespace cmas.backend.Contract
+namespace cmas.backend.Contract.Models
 {
     /// <summary>
     /// Договор

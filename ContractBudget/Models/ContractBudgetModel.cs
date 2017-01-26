@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using cmas.backend.ContractBudget.Item;
+using cmas.backend.ContractBudget.Models.Item;
 
-namespace cmas.backend.ContractBudget
+namespace cmas.backend.ContractBudget.Models
 {
     public class ContractBudgetModel
     {
@@ -14,7 +14,7 @@ namespace cmas.backend.ContractBudget
         /// <summary>
         /// ID договора
         /// </summary>
-        public int contractId;
+        public int ContractId;
 
         /// <summary>
         /// Доступные работы по договору (запланированные)

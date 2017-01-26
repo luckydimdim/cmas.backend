@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace cmas.backend.Contract
+namespace cmas.backend.Contract.Models.Work
 {
     /// <summary>
     /// ываыв
