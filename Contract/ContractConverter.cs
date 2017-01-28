@@ -28,14 +28,13 @@ namespace cmas.backend.Contract
                     row.Currency = (material as MaterialModel).Currency.Code;
                     row.ObjectConstruction = (material as MaterialModel).ObjectConstruction.Name;
 
-                    row.DeliveryDate = (material as MaterialModel).DeliveryDate.ToString("s");
+                    row.DeliveryDate = (material as MaterialModel).DeliveryDate.ToString("d");
                 }
 
 
                 if (material is MaterialStageModel)
                 {
-                    var w2ui = new { children = ContractMaterialsToJson(material.Childrens)};
-                    dictionary.Add("w2ui", w2ui);
+					dictionary.Add("children", ContractMaterialsToJson(material.Childrens));
                 }
 
                 result.Add(row);
@@ -67,8 +66,8 @@ namespace cmas.backend.Contract
                     row.Currency = (work as WorkModel).Currency.Code;
                     row.ObjectConstruction = (work as WorkModel).ObjectConstruction.Name;
 
-                    row.BeginDate = (work as WorkModel).BeginDate.ToString("s");
-                    row.EndDate = (work as WorkModel).EndDate.ToString("s");
+                    row.BeginDate = (work as WorkModel).BeginDate.ToString("d");
+                    row.EndDate = (work as WorkModel).EndDate.ToString("d");
                     row.ContractorName = (work as WorkModel).Contractor.Name;
 
                 }
@@ -76,7 +75,7 @@ namespace cmas.backend.Contract
 
                 if (work is WorkStageModel)
                 {
-                    dictionary.Add("children", ContractWorksToJson(work.Childrens)});
+                    dictionary.Add("children", ContractWorksToJson(work.Childrens));
                 }
 
                 result.Add(row);
