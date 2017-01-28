@@ -76,8 +76,7 @@ namespace cmas.backend.Contract
 
                 if (work is WorkStageModel)
                 {
-                    var w2ui = new { children = ContractWorksToJson(work.Childrens)};
-                    dictionary.Add("w2ui", w2ui);
+                    dictionary.Add("children", ContractWorksToJson(work.Childrens)});
                 }
 
                 result.Add(row);
