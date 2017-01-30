@@ -51,8 +51,6 @@ namespace cmas.backend.ContractBudget
             return result;
         }
 
-
-
         public static ContractBudgetModel CreateContractBudget(int contractId, ref List<ContractBudgetModel> ContractBudgets, List<ContractModel> Contracts )
         {
             var contractBudget = (from b in ContractBudgets where b.ContractId == contractId select b).SingleOrDefault();

@@ -7,11 +7,8 @@ namespace cmas.backend.ContractBudget
 {
     public sealed class ContractBudgetModule: GeneralModule
     {
-
-
         public ContractBudgetModule(Repository repository) : base(repository, "/api/contractBudget")
         {
-
             Get("/list", args =>
             {
                 var contractBudgets = (from b in Repository.ContractBudgets select b);
@@ -56,25 +53,21 @@ namespace cmas.backend.ContractBudget
 
                 var response = (Response)Newtonsoft.Json.JsonConvert.SerializeObject(result);
                 response.ContentType = "application/json";
-                return response;
 
+                return response;
             });
 
             Post("/{id}/create", args =>
             {
                 var contractId = args.id;
 
-                var contractBudget = ContractBudgetLogic.CreateContractBudget(contractId, ref Repository.ContractBudgets,Repository.Contracts);
+                var contractBudget = ContractBudgetLogic.CreateContractBudget(contractId, ref Repository.ContractBudgets, Repository.Contracts);
 
                 if (contractBudget == null)
                     return HttpStatusCode.BadRequest;
 
                 return HttpStatusCode.OK;
-
             });
-
-
-
         }
     }
 }

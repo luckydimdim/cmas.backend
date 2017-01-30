@@ -5,7 +5,6 @@ namespace cmas.backend.Mock.Contractors
 {
     public class MockContractors
     {
-
         public static List<ContractorModel> Generate()
         {
             var Contractors = new List<ContractorModel>();
@@ -34,7 +33,6 @@ namespace cmas.backend.Mock.Contractors
                 Id = ++idCounter,
                 Name = "ООО Городок",
             });
-
 
             Contractors.Add(new ContractorModel
             {
