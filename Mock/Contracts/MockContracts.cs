@@ -193,7 +193,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "071",
-                    NameRus = "Группа работ 1",
+                    NameRus = "[071] Группа работ 1",
                     NameEng = "Группа работ 1",
                 });
 
@@ -201,7 +201,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "001",
-                    NameRus = "Геологическое исследование участка",
+                    NameRus = "[001] Геологическое исследование участка",
                     NameEng = "Геологическое исследование участка",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
@@ -217,7 +217,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "002",
-                    NameRus = "Архитектурное проектирование",
+                    NameRus = "[002] Архитектурное проектирование",
                     NameEng = "Архитектурное проектирование",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -233,7 +233,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "003",
-                    NameRus = "Строительство фундамента",
+                    NameRus = "[003] Строительство фундамента",
                     NameEng = "Строительство фундамента",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -261,8 +261,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".1",
-                    NameRus = "Строительство стен",
+                    Code = "212",
+                    NameRus = "[212] Строительство стен",
                     NameEng = "Строительство стен",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
@@ -277,8 +277,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".2",
-                    NameRus = "Строительство внутренних перекрытий",
+                    Code = "252",
+                    NameRus = "[252] Строительство внутренних перекрытий",
                     NameEng = "Строительство внутренних перекрытий",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -293,8 +293,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".3",
-                    NameRus = "Строительство внешних перекрытий",
+                    Code = "342",
+                    NameRus = "[342] Строительство внешних перекрытий",
                     NameEng = "Строительство внешних перекрытий",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -310,8 +310,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".4",
-                    NameRus = "Строительство крыши",
+                    Code = "544",
+                    NameRus = "[544] Строительство крыши",
                     NameEng = "Строительство крыши",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -349,7 +349,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code =  "532",
-                    NameRus = "Подключение электроснабжения",
+                    NameRus = "[532] Подключение электроснабжения",
                     NameEng = "Подключение электроснабжения",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -365,7 +365,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "354",
-                    NameRus = "Подключение газоснабжение",
+                    NameRus = "[532] Подключение газоснабжение",
                     NameEng = "Подключение газоснабжение",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -381,7 +381,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "562",
-                    NameRus = "Подключение отопления",
+                    NameRus = "[532] Подключение отопления",
                     NameEng = "Подключение отопления",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -397,7 +397,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "632",
-                    NameRus = "Подключение кондиционирования",
+                    NameRus = "[532] Подключение кондиционирования",
                     NameEng = "Подключение кондиционирования",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -415,7 +415,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "634",
-                    NameRus = "Утепление и отделка фасадов",
+                    NameRus = "[634] Утепление и отделка фасадов",
                     NameEng = "Утепление и отделка фасадов",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -431,7 +431,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "643",
-                    NameRus = "Утепление чердачного перекрытия",
+                    NameRus = "[643] Утепление чердачного перекрытия",
                     NameEng = "Утепление чердачного перекрытия",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -461,8 +461,8 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "632",
-                    NameRus = "Внутренняя отделка",
-                    NameEng = "Внутренняя отделка",
+                    NameRus = "[632] Внутренняя отделка",
+                    NameEng = "[632] Внутренняя отделка",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
                     ObjectConstruction = houseObject,
@@ -477,8 +477,8 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "766",
-                    NameRus = "Внешняя отделка",
-                    NameEng = "Внешняя отделка",
+                    NameRus = "[766] Внешняя отделка",
+                    NameEng = "[766] Внешняя отделка",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
                     ObjectConstruction = houseObject,
@@ -498,17 +498,17 @@ namespace cmas.backend.Mock.Contracts
                 var stage = new WorkStageModel
                 {
                     Id = ++idCounter,
-                    Code = "643",
-                    NameRus = "Ландшафтные работы",
-                    NameEng = "Ландшафтные работы",
+                    Code = String.Empty,
+                    NameRus = "[643] Ландшафтные работы",
+                    NameEng = "[643] Ландшафтные работы",
                 };
 
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
                     Code = "634",
-                    NameRus = "Озеленение территории",
-                    NameEng = "Озеленение территории",
+                    NameRus = "[634] Озеленение территории",
+                    NameEng = "[634] Озеленение территории",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
                     ObjectConstruction = houseObject,
@@ -523,8 +523,8 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "243",
-                    NameRus = "Благоустройство",
-                    NameEng = "Благоустройство",
+                    NameRus = "[243] Благоустройство",
+                    NameEng = "[243] Благоустройство",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
                     ObjectConstruction = houseObject,
@@ -553,7 +553,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "563",
-                    NameRus = "Установка освещения участка и проезда к участку",
+                    NameRus = "[563] Установка освещения участка и проезда к участку",
                     NameEng = "Установка освещения участка и проезда к участку",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
@@ -569,7 +569,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "532",
-                    NameRus = "Настрйока системы видеонаблюдения",
+                    NameRus = "[532] Настрйока системы видеонаблюдения",
                     NameEng = "Настрйока системы видеонаблюдения",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -608,7 +608,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "071",
-                    NameRus = "Группа работ 1",
+                    NameRus = "[071] Группа работ 1",
                     NameEng = "Группа работ 1",
                 });
 
@@ -616,7 +616,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "001",
-                    NameRus = "Геологическое исследование участка",
+                    NameRus = "[001] Геологическое исследование участка",
                     NameEng = "Геологическое исследование участка",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
@@ -632,7 +632,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "002",
-                    NameRus = "Архитектурное проектирование",
+                    NameRus = "[002] Архитектурное проектирование",
                     NameEng = "Архитектурное проектирование",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -648,7 +648,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "003",
-                    NameRus = "Строительство фундамента",
+                    NameRus = "[003] Строительство фундамента",
                     NameEng = "Строительство фундамента",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -676,8 +676,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".1",
-                    NameRus = "Строительство стен",
+                    Code = "212",
+                    NameRus = "[212] Строительство стен",
                     NameEng = "Строительство стен",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
@@ -692,8 +692,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".2",
-                    NameRus = "Строительство внутренних перекрытий",
+                    Code = "252",
+                    NameRus = "[252] Строительство внутренних перекрытий",
                     NameEng = "Строительство внутренних перекрытий",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -708,8 +708,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".3",
-                    NameRus = "Строительство внешних перекрытий",
+                    Code = "342",
+                    NameRus = "[342] Строительство внешних перекрытий",
                     NameEng = "Строительство внешних перекрытий",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -725,8 +725,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".4",
-                    NameRus = "Строительство крыши",
+                    Code = "544",
+                    NameRus = "[544] Строительство крыши",
                     NameEng = "Строительство крыши",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -764,7 +764,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code =  "532",
-                    NameRus = "Подключение электроснабжения",
+                    NameRus = "[532] Подключение электроснабжения",
                     NameEng = "Подключение электроснабжения",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -780,7 +780,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "354",
-                    NameRus = "Подключение газоснабжение",
+                    NameRus = "[532] Подключение газоснабжение",
                     NameEng = "Подключение газоснабжение",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -796,7 +796,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "562",
-                    NameRus = "Подключение отопления",
+                    NameRus = "[532] Подключение отопления",
                     NameEng = "Подключение отопления",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -812,7 +812,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "632",
-                    NameRus = "Подключение кондиционирования",
+                    NameRus = "[532] Подключение кондиционирования",
                     NameEng = "Подключение кондиционирования",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -830,7 +830,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "634",
-                    NameRus = "Утепление и отделка фасадов",
+                    NameRus = "[634] Утепление и отделка фасадов",
                     NameEng = "Утепление и отделка фасадов",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -846,7 +846,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "643",
-                    NameRus = "Утепление чердачного перекрытия",
+                    NameRus = "[643] Утепление чердачного перекрытия",
                     NameEng = "Утепление чердачного перекрытия",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -876,8 +876,8 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "632",
-                    NameRus = "Внутренняя отделка",
-                    NameEng = "Внутренняя отделка",
+                    NameRus = "[632] Внутренняя отделка",
+                    NameEng = "[632] Внутренняя отделка",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
                     ObjectConstruction = houseObject,
@@ -892,8 +892,8 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "766",
-                    NameRus = "Внешняя отделка",
-                    NameEng = "Внешняя отделка",
+                    NameRus = "[766] Внешняя отделка",
+                    NameEng = "[766] Внешняя отделка",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
                     ObjectConstruction = houseObject,
@@ -913,17 +913,17 @@ namespace cmas.backend.Mock.Contracts
                 var stage = new WorkStageModel
                 {
                     Id = ++idCounter,
-                    Code = "643",
-                    NameRus = "Ландшафтные работы",
-                    NameEng = "Ландшафтные работы",
+                    Code = String.Empty,
+                    NameRus = "[643] Ландшафтные работы",
+                    NameEng = "[643] Ландшафтные работы",
                 };
 
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
                     Code = "634",
-                    NameRus = "Озеленение территории",
-                    NameEng = "Озеленение территории",
+                    NameRus = "[634] Озеленение территории",
+                    NameEng = "[634] Озеленение территории",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
                     ObjectConstruction = houseObject,
@@ -938,8 +938,8 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "243",
-                    NameRus = "Благоустройство",
-                    NameEng = "Благоустройство",
+                    NameRus = "[243] Благоустройство",
+                    NameEng = "[243] Благоустройство",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
                     ObjectConstruction = houseObject,
@@ -968,7 +968,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "563",
-                    NameRus = "Установка освещения участка и проезда к участку",
+                    NameRus = "[563] Установка освещения участка и проезда к участку",
                     NameEng = "Установка освещения участка и проезда к участку",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
@@ -984,7 +984,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "532",
-                    NameRus = "Настрйока системы видеонаблюдения",
+                    NameRus = "[532] Настрйока системы видеонаблюдения",
                     NameEng = "Настрйока системы видеонаблюдения",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -1023,7 +1023,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "071",
-                    NameRus = "Группа работ 1",
+                    NameRus = "[071] Группа работ 1",
                     NameEng = "Группа работ 1",
                 });
 
@@ -1031,7 +1031,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "001",
-                    NameRus = "Геологическое исследование участка",
+                    NameRus = "[001] Геологическое исследование участка",
                     NameEng = "Геологическое исследование участка",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
@@ -1047,7 +1047,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "002",
-                    NameRus = "Архитектурное проектирование",
+                    NameRus = "[002] Архитектурное проектирование",
                     NameEng = "Архитектурное проектирование",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -1063,7 +1063,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "003",
-                    NameRus = "Строительство фундамента",
+                    NameRus = "[003] Строительство фундамента",
                     NameEng = "Строительство фундамента",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -1091,8 +1091,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".1",
-                    NameRus = "Строительство стен",
+                    Code = "212",
+                    NameRus = "[212] Строительство стен",
                     NameEng = "Строительство стен",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
@@ -1107,8 +1107,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".2",
-                    NameRus = "Строительство внутренних перекрытий",
+                    Code = "252",
+                    NameRus = "[252] Строительство внутренних перекрытий",
                     NameEng = "Строительство внутренних перекрытий",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -1123,8 +1123,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".3",
-                    NameRus = "Строительство внешних перекрытий",
+                    Code = "342",
+                    NameRus = "[342] Строительство внешних перекрытий",
                     NameEng = "Строительство внешних перекрытий",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -1140,8 +1140,8 @@ namespace cmas.backend.Mock.Contracts
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
-                    Code = stage.Code + ".4",
-                    NameRus = "Строительство крыши",
+                    Code = "544",
+                    NameRus = "[544] Строительство крыши",
                     NameEng = "Строительство крыши",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -1179,7 +1179,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code =  "532",
-                    NameRus = "Подключение электроснабжения",
+                    NameRus = "[532] Подключение электроснабжения",
                     NameEng = "Подключение электроснабжения",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -1195,7 +1195,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "354",
-                    NameRus = "Подключение газоснабжение",
+                    NameRus = "[532] Подключение газоснабжение",
                     NameEng = "Подключение газоснабжение",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -1211,7 +1211,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "562",
-                    NameRus = "Подключение отопления",
+                    NameRus = "[532] Подключение отопления",
                     NameEng = "Подключение отопления",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -1227,7 +1227,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "632",
-                    NameRus = "Подключение кондиционирования",
+                    NameRus = "[532] Подключение кондиционирования",
                     NameEng = "Подключение кондиционирования",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -1245,7 +1245,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "634",
-                    NameRus = "Утепление и отделка фасадов",
+                    NameRus = "[634] Утепление и отделка фасадов",
                     NameEng = "Утепление и отделка фасадов",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -1261,7 +1261,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "643",
-                    NameRus = "Утепление чердачного перекрытия",
+                    NameRus = "[643] Утепление чердачного перекрытия",
                     NameEng = "Утепление чердачного перекрытия",
                     BeginDate = new DateTime(2017, 01, 09),
                     EndDate = new DateTime(2017, 01, 20),
@@ -1291,8 +1291,8 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "632",
-                    NameRus = "Внутренняя отделка",
-                    NameEng = "Внутренняя отделка",
+                    NameRus = "[632] Внутренняя отделка",
+                    NameEng = "[632] Внутренняя отделка",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
                     ObjectConstruction = houseObject,
@@ -1307,8 +1307,8 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "766",
-                    NameRus = "Внешняя отделка",
-                    NameEng = "Внешняя отделка",
+                    NameRus = "[766] Внешняя отделка",
+                    NameEng = "[766] Внешняя отделка",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
                     ObjectConstruction = houseObject,
@@ -1328,17 +1328,17 @@ namespace cmas.backend.Mock.Contracts
                 var stage = new WorkStageModel
                 {
                     Id = ++idCounter,
-                    Code = "643",
-                    NameRus = "Ландшафтные работы",
-                    NameEng = "Ландшафтные работы",
+                    Code = String.Empty,
+                    NameRus = "[643] Ландшафтные работы",
+                    NameEng = "[643] Ландшафтные работы",
                 };
 
                 stage.Childrens.Add(new WorkModel
                 {
                     Id = ++idCounter,
                     Code = "634",
-                    NameRus = "Озеленение территории",
-                    NameEng = "Озеленение территории",
+                    NameRus = "[634] Озеленение территории",
+                    NameEng = "[634] Озеленение территории",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
                     ObjectConstruction = houseObject,
@@ -1353,8 +1353,8 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "243",
-                    NameRus = "Благоустройство",
-                    NameEng = "Благоустройство",
+                    NameRus = "[243] Благоустройство",
+                    NameEng = "[243] Благоустройство",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
                     ObjectConstruction = houseObject,
@@ -1383,7 +1383,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "563",
-                    NameRus = "Установка освещения участка и проезда к участку",
+                    NameRus = "[563] Установка освещения участка и проезда к участку",
                     NameEng = "Установка освещения участка и проезда к участку",
                     BeginDate = new DateTime(2017, 01, 01),
                     EndDate = new DateTime(2017, 01, 03),
@@ -1399,7 +1399,7 @@ namespace cmas.backend.Mock.Contracts
                 {
                     Id = ++idCounter,
                     Code = "532",
-                    NameRus = "Настрйока системы видеонаблюдения",
+                    NameRus = "[532] Настрйока системы видеонаблюдения",
                     NameEng = "Настрйока системы видеонаблюдения",
                     BeginDate = new DateTime(2017, 01, 03),
                     EndDate = new DateTime(2017, 01, 09),
@@ -1412,8 +1412,7 @@ namespace cmas.backend.Mock.Contracts
                 });
 
                 contract.Works.Add(stage);
-            }                    
-
+            }
         }
 
         private static void MockMaterialsForContract(ContractModel contract, List<ContractorModel> Contractors, List<ConstructionObjectModel> ConstructionObjects, List<UnitModel> Units, List<CurrencyModel> Currencies)
