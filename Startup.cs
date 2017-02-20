@@ -1,22 +1,22 @@
+﻿using Microsoft.AspNetCore.Builder;
+using Nancy.Owin;
+using Microsoft​.AspNetCore​.Hosting;
+
 namespace cmas.backend
 {
-    using Microsoft.AspNetCore.Builder;
-    using Nancy.Owin;
-    using System;
-
     public class Startup
     {
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.Use(async (context, next) =>
+            env.EnvironmentName = "Production";    // FIXME: настроить конфигурацию и использование EnvironmentName.Production;
+            if (env.IsDevelopment())
             {
-                /*
-                Console.WriteLine(context.Request.Path);
-                context.Request.Path = "/contract";
-                */
-                await next.Invoke();
-                
-            });
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");  // FIXME: Настроить страницу, на которую надо кидать в случае 500х ошибок
+            }
 
             app.UseOwin(x => x.UseNancy());
 
