@@ -10,15 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp1.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="1.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="1.1.0" />
     <PackageReference Include="Nancy" Version="2.0.0-barneyrubble" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="contract.backend" Version="1.0.0" />
-    <PackageReference Include="System.Console" Version="4.0.0" />
+    <PackageReference Include="System.Console" Version="4.3.0" />
   </ItemGroup>
 
 </Project>
