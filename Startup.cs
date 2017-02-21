@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Nancy.Owin;
-using Microsoft​.AspNetCore​.Hosting;
 using NLog.Web;
-using Microsoft​.Extensions​.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 
@@ -15,15 +15,13 @@ namespace cmas.backend
             env.ConfigureNLog("nlog.config");
         }
 
-
         /// <summary>
-        /// FIXME: Добавляемые здесь сервисы необходимо  дублировать в Bootstrapper.cs :(
+        /// FIXME: Добавляемые здесь сервисы необходимо дублировать в Bootstrapper.cs :(
         /// Возможно позже допилят интеграцию MS DI NanacyFX DI (TinyIo)
         /// </summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
-        {
-        }
+        { }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
@@ -31,7 +29,6 @@ namespace cmas.backend
 
             loggerFactory.AddNLog();
             app.AddNLogWeb();
-
             
             if (env.IsDevelopment())
             {
@@ -42,13 +39,10 @@ namespace cmas.backend
                 app.UseExceptionHandler("/error");  // FIXME: Настроить страницу, на которую надо кидать в случае 500х ошибок
             }
 
-
             app.UseOwin(pipeline => pipeline.UseNancy(options =>
             {
                 options.Bootstrapper = new Bootstrapper(app.ApplicationServices);
             }));
-
-
         }
     }
 }
