@@ -1,35 +1,48 @@
 ﻿using System;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Nancy;
-using Nancy.TinyIoc;
-using Nancy.Configuration;
+using Nancy.Bootstrapper;
+using Nancy.Bootstrappers.Autofac;
 
 namespace cmas.backend
 {
-    /// <summary>
-    /// http://www.paddo.org/microservices-on-net-core-with-nancy-part-1/
-    /// Bootstrapper.cs - a place to copy dependencies. At the time of writing this is how you need to copy dependencies into Nancy with .net core. 
-    /// I expect this to improve in future. Note we're also enabling tracing so we can see and diagnose any errors when testing the microservice.
-    /// </summary>
-    public class Bootstrapper : DefaultNancyBootstrapper
+    public class Bootstrapper : AutofacNancyBootstrapper
     {
-        readonly IServiceProvider _serviceProvider;
+        private readonly IServiceProvider _serviceProvider = null;
 
         public Bootstrapper(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
 
-        public override void Configure(INancyEnvironment environment)
+        protected override void ApplicationStartup(ILifetimeScope container, IPipelines pipelines)
         {
-            environment.Tracing(true, true);
+            // No registrations should be performed in here, however you may
+            // resolve things that are needed during application startup.
         }
 
-        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
+        protected override void ConfigureApplicationContainer(ILifetimeScope existingContainer)
         {
-            base.ConfigureApplicationContainer(container);
-            container.Register(_serviceProvider.GetService<ILoggerFactory>());
+            // Perform registration that should have an application lifetime
+        }
+
+        protected override void ConfigureRequestContainer(ILifetimeScope container, NancyContext context)
+        {
+            // Perform registrations that should have a request lifetime
+        }
+
+        protected override void RequestStartup(ILifetimeScope container, IPipelines pipelines, NancyContext context)
+        {
+            // No registrations should be performed in here, however you may
+            // resolve things that are needed during request startup.
+        }
+
+        protected override ILifetimeScope GetApplicationContainer()
+        {
+            return _serviceProvider.GetService<ILifetimeScope>();
         }
     }
 }
