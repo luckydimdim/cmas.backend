@@ -1,11 +1,12 @@
 ﻿using System;
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using error_handler.backend;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.Autofac;
+using Nancy.Responses.Negotiation;
 
 namespace cmas.backend
 {
@@ -38,11 +39,26 @@ namespace cmas.backend
         {
             // No registrations should be performed in here, however you may
             // resolve things that are needed during request startup.
+            var handler = new CmErrorHandler(container.Resolve<ILoggerFactory>());
+            // var handler = container.Resolve<CmErrorHandler>();
+
+            handler.Enable(pipelines, container.Resolve<IResponseNegotiator>());
         }
 
         protected override ILifetimeScope GetApplicationContainer()
         {
             return _serviceProvider.GetService<ILifetimeScope>();
+        }
+
+        protected override Func<ITypeCatalog, NancyInternalConfiguration> InternalConfiguration
+        {
+            get
+            {
+                return NancyInternalConfiguration.WithOverrides(config => {
+                    config.StatusCodeHandlers = new[] { typeof(StatusCodeHandler404), typeof(StatusCodeHandler500) };
+                    config.ResponseProcessors = new[] { typeof(JsonProcessor), typeof(XmlProcessor) };
+                });
+            }
         }
     }
 }
