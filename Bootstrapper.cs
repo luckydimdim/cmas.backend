@@ -1,6 +1,6 @@
 ﻿using System;
 using Autofac;
-using error_handler.backend;
+using error_handler.backend.Web;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Nancy;
@@ -39,8 +39,7 @@ namespace cmas.backend
         {
             // No registrations should be performed in here, however you may
             // resolve things that are needed during request startup.
-            var handler = new CmErrorHandler(container.Resolve<ILoggerFactory>());
-            // var handler = container.Resolve<CmErrorHandler>();
+            var handler = new ErrorHandler(container.Resolve<ILoggerFactory>());
 
             handler.Enable(pipelines, container.Resolve<IResponseNegotiator>());
         }
