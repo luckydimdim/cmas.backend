@@ -20,6 +20,7 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.0.0" />
     <PackageReference Include="contract.backend" Version="1.0.0" />
     <PackageReference Include="couch_client.backend" Version="1.0.0" />
+    <PackageReference Include="error_handler.backend" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.0" />
     <PackageReference Include="Nancy.Bootstrappers.Autofac" Version="2.0.0-clinteastwood" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.3.1" />
