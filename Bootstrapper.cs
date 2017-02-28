@@ -55,7 +55,7 @@ namespace cmas.backend
             {
                 return NancyInternalConfiguration.WithOverrides(config => {
                     config.StatusCodeHandlers = new[] { typeof(StatusCodeHandler404), typeof(StatusCodeHandler500) };
-                    config.ResponseProcessors = new[] { typeof(JsonProcessor), typeof(XmlProcessor) };
+                    config.ResponseProcessors = new[] { typeof(JsonProcessor) };
                 });
             }
         }
