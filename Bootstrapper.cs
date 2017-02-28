@@ -40,8 +40,17 @@ namespace cmas.backend
             // No registrations should be performed in here, however you may
             // resolve things that are needed during request startup.
             var handler = new ErrorHandler(container.Resolve<ILoggerFactory>());
-
             handler.Enable(pipelines, container.Resolve<IResponseNegotiator>());
+
+            //CORS Enable
+            pipelines.AfterRequest.AddItemToEndOfPipeline(ctx =>
+            {
+                ctx.Response.WithHeader("Access-Control-Allow-Origin", "*localhost*")
+                    .WithHeader("Access-Control-Allow-Origin", "*cm-ylng-msk-01*")
+                    .WithHeader("Access-Control-Allow-Methods", "POST,GET")
+                    .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
+
+            });            
         }
 
         protected override ILifetimeScope GetApplicationContainer()
