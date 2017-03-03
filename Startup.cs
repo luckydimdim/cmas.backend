@@ -8,6 +8,11 @@ using Nancy.Owin;
 using NLog.Web;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
+using Cmas.Backend.Infrastructure.Domain.Commands;
+using System.Collections.Generic;
+using System.Reflection;
+using Microsoft.Extensions.DependencyModel;
+using System.Linq;
 
 namespace cmas.backend
 {
@@ -20,9 +25,50 @@ namespace cmas.backend
             env.ConfigureNLog("nlog.config");
         }
 
+        public static IEnumerable<Assembly> GetReferencingAssemblies(string assemblyName)
+        {
+            var assemblies = new List<Assembly>();
+            var dependencies = DependencyContext.Default.RuntimeLibraries;
+            foreach (var library in dependencies)
+            {
+                if (IsCandidateLibrary(library, assemblyName))
+                {
+                    var assembly = Assembly.Load(new AssemblyName(library.Name));
+                    assemblies.Add(assembly);
+                }
+            }
+            return assemblies;
+        }
+
+        private static bool IsCandidateLibrary(RuntimeLibrary library, string assemblyName)
+        {
+            return library.Name == (assemblyName)
+                || library.Dependencies.Any(d => d.Name.StartsWith(assemblyName));
+        }
+
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             var builder = new ContainerBuilder();
+
+            var assemblies = GetReferencingAssemblies("Cmas");
+
+            foreach (var assembly in assemblies)
+            {
+                builder
+                 .RegisterAssemblyTypes(assembly)
+                 .AsClosedTypesOf(typeof(ICommand<>));
+            }
+
+            builder.RegisterType<CommandBuilder>().As<ICommandBuilder>();
+
+            builder.Register<Func<Type, object>>(c =>
+            {
+                var componentContext = c.Resolve<IComponentContext>();
+                return (t) => {
+                    return componentContext.Resolve(t);
+                };
+            });
+
 
             builder.RegisterType<LoggerFactory>().As<ILoggerFactory>();
             builder.Populate(services);

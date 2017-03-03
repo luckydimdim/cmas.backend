@@ -17,8 +17,9 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.0.0" />
-    <PackageReference Include="contract.backend" Version="1.0.0" />
-    <PackageReference Include="couch_client.backend" Version="1.0.0" />
+    <PackageReference Include="Cmas.Backend.Infrastructure.Domain" Version="1.0.0" />
+    <PackageReference Include="Cmas.Backend.Modules.Contracts" Version="1.0.0" />
+    <PackageReference Include="Cmas.Backend.Modules.Contracts.Datalayer.Couchdb" Version="1.0.0" />
     <PackageReference Include="error_handler.backend" Version="1.0.0" />
     <PackageReference Include="log_writer.backend" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.0" />
