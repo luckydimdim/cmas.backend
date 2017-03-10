@@ -45,9 +45,9 @@ namespace cmas.backend
             //CORS Enable
             pipelines.AfterRequest.AddItemToEndOfPipeline(ctx =>
             {
-                ctx.Response.WithHeader("Access-Control-Allow-Origin", "*localhost*")
-                    .WithHeader("Access-Control-Allow-Origin", "*cm-ylng-msk-01*")
-                    .WithHeader("Access-Control-Allow-Methods", "POST,GET")
+                ctx.Response
+                    .WithHeader("Access-Control-Allow-Origin", "*")
+                    .WithHeader("Access-Control-Allow-Methods", "POST,GET,PUT,DELETE")
                     .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
 
             });            
