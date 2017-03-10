@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.Extensions.DependencyModel;
 using System.Linq;
+using Cmas.Backend.Infrastructure.Domain.Queries;
 
 namespace cmas.backend
 {
@@ -54,13 +55,25 @@ namespace cmas.backend
 
             foreach (var assembly in assemblies)
             {
+                var t = assembly.DefinedTypes;
+
                 builder
                  .RegisterAssemblyTypes(assembly)
                  .AsClosedTypesOf(typeof(ICommand<>));
+
+                builder
+                 .RegisterAssemblyTypes(assembly)
+                 .AsClosedTypesOf(typeof(IQuery<,>));
             }
 
-            builder.RegisterType<CommandBuilder>().As<ICommandBuilder>();
 
+
+            builder.RegisterType<CommandBuilder>().As<ICommandBuilder>();
+            builder.RegisterType<QueryBuilder>().As<IQueryBuilder>();
+            builder.RegisterType<QueryFactory>().As<IQueryFactory>();
+
+            builder.RegisterGeneric(typeof(QueryFor<>)).As(typeof(IQueryFor<>));
+  
             builder.Register<Func<Type, object>>(c =>
             {
                 var componentContext = c.Resolve<IComponentContext>();
