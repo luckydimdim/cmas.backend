@@ -11,18 +11,18 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Cmas.Backend.Modules.CallOffOrders" Version="1.*" />
-    <PackageReference Include="Cmas.Modules.CallOffOrders.Datalayer.Couchdb" Version="1.*" />
+    <PackageReference Include="Cmas.Backend.Modules.CallOffOrders" Version="1.1.0" />
+    <PackageReference Include="Cmas.Modules.CallOffOrders.Datalayer.Couchdb" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Owin" Version="1.1.1" />
     <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.0.0" />
-    <PackageReference Include="Cmas.Backend.Infrastructure.Domain" Version="1.*" />
-    <PackageReference Include="Cmas.Backend.Modules.Contracts" Version="1.*" />
-    <PackageReference Include="Cmas.Backend.Modules.Contracts.Datalayer.Couchdb" Version="1.*" />
-    <PackageReference Include="error_handler.backend" Version="1.*" />
-    <PackageReference Include="log_writer.backend" Version="1.*" />
+    <PackageReference Include="Cmas.Backend.Infrastructure.Domain" Version="1.1.0" />
+    <PackageReference Include="Cmas.Backend.Modules.Contracts" Version="1.1.0" />
+    <PackageReference Include="Cmas.Backend.Modules.Contracts.Datalayer.Couchdb" Version="1.1.0" />
+    <PackageReference Include="error_handler.backend" Version="1.0.2" />
+    <PackageReference Include="log_writer.backend" Version="1.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.1.1" />
     <PackageReference Include="Nancy.Bootstrappers.Autofac" Version="2.0.0-clinteastwood" />
