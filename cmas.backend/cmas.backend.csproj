@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Cmas.Backend.Modules.CallOffOrders" Version="1.1.0" />
-    <PackageReference Include="Cmas.Modules.CallOffOrders.Datalayer.Couchdb" Version="1.1.0" />
+    <PackageReference Include="Cmas.Modules.CallOffOrders.Datalayer.Couchdb" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Owin" Version="1.1.1" />
